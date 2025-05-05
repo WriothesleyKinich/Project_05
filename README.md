@@ -1,4 +1,4 @@
-Project_05/
+курсовая/
 ├── README.md
 ├── html/
 │   ├── 1.html
