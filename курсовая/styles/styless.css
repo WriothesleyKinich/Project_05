@@ -1,0 +1,168 @@
+/* Общие стили */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #fff7e8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hidden {
+    display: none;
+}
+/* v */
+.menu-item {
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-item.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+/* ^ */
+/* Шапка */
+
+header {
+    background-color: #fff7e8;
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    font-size: 1.2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+/* Каталог */
+.catalog {
+    padding: 40px 0;
+}
+
+.catalog h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.catalog-item {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.catalog-item h3 {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.catalog-item p {
+    font-size: 1rem;
+    color: #777;
+}
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+/* Подвал */
+footer {
+    background-color: #fff7e8;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}

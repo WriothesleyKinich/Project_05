@@ -1,0 +1,338 @@
+/* Общие стили */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #fff7e8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.menu-item {
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+.menu-item.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Шапка */
+header {
+    background-color: #fff7e8;
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    font-size: 1.2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+
+/* Основной контент */
+main {
+    padding: 40px 0;
+}
+
+.main-content {
+    display: flex;
+    gap: 40px;
+}
+
+.sidebar {
+    width: 250px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-data {
+    flex: 1;
+    display: flex;
+    gap: 30px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.profile-photo {
+    text-align: center;
+    min-width: 150px;
+}
+
+.profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-photo button {
+    padding: 10px 20px;
+    background-color: #bada55;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+.form label {
+    margin-bottom: 5px;
+}
+
+.form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form button {
+    padding: 12px 25px;
+    background-color: #bada55;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Слайдер */
+.slider {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.slider-images {
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.slider-item {
+    flex: 0 0 auto;
+    width: 33.333%;
+    text-align: center;
+    padding: 10px;
+}
+
+.slider-images {
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+}
+.slider-item {
+    flex: 0 0 33.333%;
+    text-align: center;
+    padding: 10px;
+}
+.slider-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.slider-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.arrow {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+/* Подвал */
+footer {
+    background-color: #fff7e8;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Адаптивность */
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    header nav ul {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #fff7e8;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 0;
+        margin: 0;
+        display: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    header nav ul.active {
+        display: flex;
+    }
+
+    header nav ul li {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+    }
+
+    header nav ul li a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 1.2rem;
+    }
+
+    #menu-toggle {
+        font-size: 1.8rem;
+        cursor: pointer;
+        user-select: none;
+        z-index: 1100;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+        margin: 0;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .header-icons {
+        font-size: 1.3rem;
+        gap: 15px;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .profile-data {
+        flex-direction: column;
+    }
+
+    .profile-photo {
+        margin-bottom: 20px;
+    }
+}
+
+/* ПК */
+@media (min-width: 769px) {
+    header nav ul {
+        display: flex !important;
+        position: static;
+        background: none;
+        box-shadow: none;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    #menu-toggle {
+        display: none;
+    }
+}
+

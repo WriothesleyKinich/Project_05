@@ -1,0 +1,188 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #fff7e8; /* Цвет фона страницы */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+.menu-item {
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-item.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Шапка */
+header {
+    background-color: #fff7e8;
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    font-size: 1.2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+
+
+/* Основной контент */
+main {
+    padding: 40px 0;
+}
+
+/* Избранное */
+.favorites {
+    padding: 40px 0;
+}
+
+.favorites h2 {
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.favorite-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Цвет фона элемента */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.favorite-item h3 {
+    font-size: 1.3rem;
+    margin: 0;
+    flex: 1;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-controls button {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.quantity-controls input {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Подвал */
+footer {
+    background-color: #fff7e8; /* Цвет фона подвала */
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}

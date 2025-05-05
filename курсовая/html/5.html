@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Лепестки роз</title>
+    <link rel="stylesheet" href="styfive.css">
+    <script src="hide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="modules/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <nav>
+                <ul>
+                    <li><a href="#" id="menu-toggle">☰</a></li>
+                    <li class="menu-item"><a href="2.html">О нас</a></li>
+                    <li class="menu-item"><a href="1.html">Каталог</a></li>
+                    <li class="menu-item"><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="logo"><a href="2.html">Лепестки роз</a></div>
+            <div class="header-icons">
+                <a href="5.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a href="3.html"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                <a href="4.html"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="cart">
+            <div class="container">
+                <h2>Корзина</h2>
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <img src="images/pp.png" alt="Садовое ассорти">
+                        <div class="cart-item-details">
+                            <h3>Садовое ассорти 1600 рублей</h3>
+                            <div class="quantity-controls">
+                                <button>+</button>
+                                <input type="number" value="1" min="1">
+                                <button>-</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <img src="images/pp2.png" alt="Слияние цветов">
+                        <div class="cart-item-details">
+                            <h3>Слияние цветов 1500 рублей</h3>
+                            <div class="quantity-controls">
+                                <button>+</button>
+                                <input type="number" value="1" min="1">
+                                <button>-</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Садовое ассорти 1600 РУБЛЕЙ</h3>
+                    <h3>Слияние цветов 1500 РУБЛЕЙ</h3>
+                    <p>Адрес доставки: Г.карасук, ул. Ленина, 120</p>
+                    <p>Доставка: Бесплатно</p>
+                    <h2>Всего: 3100 рублей</h2>
+                    <button class="buy-button"><a href="6.html">Купить</a></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-icons">
+                <a href="#">✉️</a>
+                <a href="#">💬</a>
+            </div>
+            <div class="footer-info">
+                <p>Поддержка:</p>
+                <p>+123 456 789</p>
+                <p>flout_world@mail.ru</p>
+                <p>10:00 - 19:00</p>
+            </div>
+            <p class="copyright">flout_world@mail.ru ©Copyright 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const cartItemsContainer = document.querySelector('.cart-items');
+  const orderSummary = document.querySelector('.order-summary');
+
+  // Загружаем товары из localStorage
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  // Функция для обновления отображения корзины
+  function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+
+    cartItems.forEach(item => {
+      // Парсим цену из строки, например "Садовое ассорти 1600 рублей"
+      const priceMatch = item.title.match(/(\d+)\s*руб/);
+      const price = priceMatch ? parseInt(priceMatch[1], 10) : 0;
+      const productName = item.title.replace(/\d+\s*руб.*/i, '').trim();
+      const itemTotalPrice = price * item.quantity;
+      total += itemTotalPrice;
+
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <img src="${item.img}" alt="${productName}">
+        <div class="cart-item-details">
+          <h3>${productName} ${itemTotalPrice} рублей</h3>
+          <div class="quantity-controls">
+            <button class="plus">+</button>
+            <input type="number" value="${item.quantity}" min="1">
+            <button class="minus">-</button>
+          </div>
+        </div>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+
+      // Обработчики изменения количества для каждого товара
+      const plusBtn = cartItem.querySelector('.plus');
+      const minusBtn = cartItem.querySelector('.minus');
+      const quantityInput = cartItem.querySelector('input[type="number"]');
+
+      plusBtn.addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        updateQuantity(cartItem, productName);
+      });
+
+      minusBtn.addEventListener('click', () => {
+        if (parseInt(quantityInput.value) > 1) {
+          quantityInput.value = parseInt(quantityInput.value) - 1;
+          updateQuantity(cartItem, productName);
+        }
+      });
+
+      quantityInput.addEventListener('change', () => {
+        if (quantityInput.value < 1 || isNaN(quantityInput.value)) quantityInput.value = 1;
+        updateQuantity(cartItem, productName);
+      });
+    });
+
+    updateOrderSummary(total);
+  }
+
+  // Обновление количества товара и цены
+  function updateQuantity(cartItem, productName) {
+    const quantityInput = cartItem.querySelector('input[type="number"]');
+    const quantity = parseInt(quantityInput.value, 10);
+
+    // Обновляем данные в cartItems
+    const item = cartItems.find(i => i.title.includes(productName));
+    if (item) {
+      item.quantity = quantity;
+      // Обновляем цену в заголовке
+      const priceMatch = item.title.match(/(\d+)\s*руб/);
+      const price = priceMatch ? parseInt(priceMatch[1], 10) : 0;
+      const newPrice = price * quantity;
+      cartItem.querySelector('h3').textContent = `${productName} ${newPrice} рублей`;
+    }
+
+    // Перерисовываем общую сумму
+    let total = 0;
+    cartItems.forEach(i => {
+      const priceMatch = i.title.match(/(\d+)\s*руб/);
+      const price = priceMatch ? parseInt(priceMatch[1], 10) : 0;
+      total += price * i.quantity;
+    });
+    updateOrderSummary(total);
+
+    // Сохраняем изменения в localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }
+
+  // Обновление блока с итоговой суммой
+  function updateOrderSummary(total) {
+    orderSummary.innerHTML = `
+      ${cartItems.map(i => `<h3>${i.title.replace(/\d+\s*руб.*/i, '').trim()} ${i.quantity * (parseInt(i.title.match(/(\d+)\s*руб/)[1], 10))} РУБЛЕЙ</h3>`).join('')}
+      <p>Адрес доставки: Г.карасук, ул. Ленина, 120</p>
+      <p>Доставка: Бесплатно</p>
+      <h2>Всего: ${total} рублей</h2>
+      <button class="buy-button"><a href="6.html">Купить</a></button>
+    `;
+  }
+
+  renderCart();
+});
+
+</script>
+</html>
