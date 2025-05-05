@@ -65,3 +65,9 @@ Project_05/
     ├── stysix.css
     ├── stythree.css
     └── stytwo.css
+
+Структура репозитория
+html/ - html файлы(фронтенд часть магазина цветов"Лепестки роз").
+styles/ - css стили для html.
+JavaScript/ - js файлы для html.
+images/ - изображения для html.
